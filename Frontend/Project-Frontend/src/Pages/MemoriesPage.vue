@@ -7,10 +7,10 @@
         </ion-header>
         <ion-content>
             <ion-item>
-                <ion-thumbnail >
-                    <imgn :src="previewImageUrl" />
+                <ion-thumbnail slot:start>
+                    <img :src="previewImageUrl" />
                 </ion-thumbnail>
-                <ion-button fill="clear" @click="takePhoto">
+                <ion-button type="button" fill="clear" @click="takePhoto">
                     <ion-icon slot="start" :icon="camera"></ion-icon>
                     Take Photo
                 </ion-button>
@@ -29,9 +29,9 @@
 import axios from 'axios';
 import { IonPage,IonHeader, IonTitle, IonContent, IonToolbar, IonThumbnail, IonButton, IonIcon, IonItem, alertController } from '@ionic/vue';
 import { camera } from 'ionicons/icons';
-import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { Plugins, CameraResultType, CameraSource, FilesystemDirectory } from '@capacitor/core';
 
-const { Camera} = Plugins;
+const { Camera, Filesystem} = Plugins;
 
 export default {
     components: {
@@ -51,20 +51,46 @@ export default {
             previewImageUrl: '',
             file: '',
             info: null,
+            base64data: null,
+            savedFile: null,
+            savedFileImage: null,
         }
     },
     mounted() {
-        axios.get('https://fae76f10df68.ngrok.io').then(response => (this.info = response))
+        axios.get('https://f5d01bb69c3b.ngrok.io').then(response => (this.info = response))
 
 
     },
     methods: {
+        async blobTo64Base(blob) {
+            const reader = new FileReader;
+            return reader.readAsDataURL(blob);
+        },
+        async savePicture(photo, fileName){
+            var base64data = " ";
+            const response = await fetch(photo.webPath);
+            const blob = await response.blob();
+             this.base64Data = this.blobTo64Base(blob);
+
+             this.savedFile = await Filesystem.writeFile({
+                path: fileName,
+                data: base64data,
+                directory: FilesystemDirectory.Data
+            });
+            return {filepath: fileName, webviewPath: photo.webPath};
+        },
         async takePhoto() {
             const photo = await Camera.getPhoto({
                 resultType: CameraResultType.Uri,
                 source: CameraSource.Camera,
                 quality: 100
             });
+
+            const fileName = new Date().getTime() + '.jpeg';
+            const savedFileImage = await this.savePicture(photo, fileName);
+            console.log(savedFileImage);
+
+
 
             this.previewImageUrl = photo.webPath;
             
@@ -88,7 +114,7 @@ export default {
         /*
           Make the request to the POST /single-file URL
         */
-            axios.post( 'https://fae76f10df68.ngrok.io',
+            axios.post( ' https://f5d01bb69c3b.ngrok.io',
                 formData,
                 {
                 headers: {
