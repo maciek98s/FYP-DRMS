@@ -1,0 +1,13 @@
+{
+  "appId": "skrzpyczynski.maciej",
+  "appName": "DRMS",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

@@ -1,0 +1,7 @@
+{
+  "name": "DRMS",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
