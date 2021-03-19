@@ -16,7 +16,9 @@ class HelloWorld(Resource):
     def post(self):
         image = request.files["file"]
         print(teststests.HelloWorld())
+        image.filename = "test.jpg"
         print(image)
+        
         filename = secure_filename(image.filename)
         image.save(os.path.join('C:/Users/Maciek/Documents/FYP/Backend', filename))
         return {'hello': 'worldsss'}
