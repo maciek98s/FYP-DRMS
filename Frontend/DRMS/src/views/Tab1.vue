@@ -2,7 +2,7 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Page</ion-title>
+                <ion-title>Page {{predict}}</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
@@ -22,7 +22,7 @@
 
           <ion-button @click="submitFile"> Submit </ion-button>
         </ion-content>
-        <div> {{ info }} </div>
+        <div> {{ predict }} </div>
     </ion-page>
 </template>
 <script>
@@ -55,10 +55,12 @@ export default {
             previewImageUrl: '',
             file: '',
             info: null,
+            predict: "null"
         }
     },
     mounted() {
         axios.get('http://localhost:5000/').then(response => (this.info = response))
+        console.log(this.predict)
 
     },
     methods: {
@@ -89,9 +91,7 @@ export default {
                     'Content-Type': 'multipart/form-data'
                 }
               }
-            ).then(function(){
-          console.log('SUCCESS!!');
-        })
+            ).then(response => (this.predict = response.data))
         .catch(function(){
           console.log('FAILURE!!');
         });
