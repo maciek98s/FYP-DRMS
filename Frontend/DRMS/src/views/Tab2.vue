@@ -38,9 +38,8 @@ export default  {
   components: { IonHeader, IonFab, IonIcon, IonFabButton, IonToolbar, IonTitle, 
                 IonContent, IonPage, IonGrid, IonRow, IonCol, IonImg },
   setup() {
-    const { photos, takePhoto } = usePhotoGallery();
+    const { takePhoto } = usePhotoGallery();
     return {
-      photos,
       takePhoto,
       camera, trash, close
     }

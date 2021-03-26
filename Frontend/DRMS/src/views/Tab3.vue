@@ -1,26 +1,32 @@
 <template>
 <ion-app>
     <ion-content fullscreen class="ion-padding" scroll-y="false">
+
       <ion-slides>
 
         <ion-slide>
           <div class="slide">
             <img src="../images/eye3.png"/>
             <h1>Welcome</h1>
-            <p>To <b> DRMS </b> also known as Diabetic Retinopathy Monitoring System </p>
+            <p>To <b> DRMS </b> also known as Diabetic Retinopathy Monitoring System </p> <br>
+            <p> ( Swipe left for next slide ) </p>
           </div>
         </ion-slide>
 
         <ion-slide>
           <img src="../images/app.png"/>
           <h2>What is DRMS</h2>
-          <p><b>DRMS</b> is an application which helps to predecit for diabetic retinopathy from an image taken with a D-eye sensor</p>
+          <p><b>DRMS</b> is an application which helps to predecit for diabetic retinopathy from an image taken with a D-eye sensor</p> <br>
+          <p> ( Swipe left for next slide ) </p>
         </ion-slide>
 
         <ion-slide>
-          <img src=""/>
-          <h2>What is Appflow?</h2>
-          <p><b>Appflow</b> is a powerful set of services and features built on top of Ionic Framework that brings a totally new level of app development agility to mobile dev teams.</p>
+          <img src="../images/D-EYE.png"/>
+          <h2>What's a D-eye sensor </h2>
+          <p><b>The D-eye sensor </b>is a powerfull tool that allows us to look into our own retinas from home </p>
+          <p>the used of the sensor requires some Guidence if this is your first time using the app Clikc the Tutorial button otherwise click Get Started </p>
+           <ion-button fill="clear">Tutorial</ion-button>
+           <ion-button fill="clear">Get Started</ion-button>
         </ion-slide>
 
         <ion-slide>
