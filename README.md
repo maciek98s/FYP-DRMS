@@ -76,3 +76,47 @@ the frontend and the backend was created using python flask api, hosting the API
 ngrok which allows to host the localhost API publicly so its easily accessible by the frontend. Finally 
 the processing of the image and their adjustment was created with the use of libraries such as 
 opencv numpy and pandas. 
+
+### File breakdown 
+This folder contains all the files that create the backend of the project 
+files:
+
+api.py - this file contains the contents of the flask API 
+
+processing.py - this files contains processing that is needed to be done the the image the user
+submits before running its through the machine learning model, it also create the predictData.csv,
+userImage folder and processedUserImage folder which contain the user image and user image after processing 
+
+best_model.h5 - these are the weights of the trained machine learning model. This is the model that had the best accuracy
+while running through the epoches
+
+model.json - this is the json model structure of the machine learning model 
+
+TrainingMlModel.ipynb - this is the jupyter notebook file that contains the code that trains and create the machine larning model 
+create the file best_model.h5 and model.json which contain the trained models weight and models structure 
+
+ngrok.exe - this is The ngrok file which when executed starts up ngrok which will allow you to host your local api publicly 
+further instructions provided in deployment section 
+
+### Deployment 
+The deployment of the files just requires cloning the repositor but to set up the backend properly following steps are to be taken
+Steps:
+
+- Clone the repository 
+- Open api.py file 
+- Run the file and copy the address that the output says the api is hosted at .i.e (  http://localhost:5000/ )
+- launch ngrok.exe 
+- while ngrok is launched in its terminal type in ngrok http  *enter local address wher APi is hosted*  .i.e http://localhost:5000/ 
+- Now another window will open and under forwarding you can see addresses where now the API is hosted publicly under 
+- Now The your API is hosted publicly under the address provided by ngrok 
+
+Linking the Frontend with the API 
+
+In the frontend do the following 
+- got to DRMS/src/views
+- Open Tab1.vue 
+- Scroll down to submitFile() method 
+- got to axios.post 
+- change the address to the address provided by ngrok  
+
+Now the Frontend should be linked with the backend ( Flask Api )
