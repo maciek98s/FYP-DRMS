@@ -106,7 +106,7 @@ Steps:
 - Open api.py file 
 - Run the file and copy the address that the output says the api is hosted at .i.e (  http://localhost:5000/ )
 - launch ngrok.exe 
-- while ngrok is launched in its terminal type in ngrok http  *enter local address wher APi is hosted*  .i.e http://localhost:5000/ 
+- while ngrok is launched in its terminal type in ngrok http  (*enter local address where APi is hosted*  .i.e http://localhost:5000/ )
 - Now another window will open and under forwarding you can see addresses where now the API is hosted publicly under 
 - Now The your API is hosted publicly under the address provided by ngrok 
 
