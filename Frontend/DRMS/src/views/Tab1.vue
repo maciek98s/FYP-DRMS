@@ -6,13 +6,12 @@
           <ion-title style="text-align: center;">Prediction Page</ion-title>
           <ion-buttons slot="start">
             <ion-back-button
-            
               @click="() => router.push('/Tutorial')"
               default-href="home"
-            > 
+            >
               <a href="/Tutorial"></a>
             </ion-back-button>
-              Tutorial
+            Tutorial
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
@@ -28,7 +27,7 @@
           of Diabetic Retinopathy
         </p>
         <label class="custom-file-upload"
-          >Upload Imageionic
+          >Upload Image
           <input
             type="file"
             id="file"
@@ -36,7 +35,13 @@
             v-on:change="handleFileUpload()"
           /> </label
         ><br />
-        <ion-button color="light" @click="submitFile"> Send Image </ion-button>
+        <ion-button v-if="file != null" color="light" @click="submitFile"> Send Image </ion-button>
+        <p class="prediction" v-if="predict == null"> No Predition made please upload an Image or make sure you are Online</p>
+        <p class="prediction" v-if="predict == 0"> No Diabetic Retinopathy has been detected</p>
+        <p class="prediction" v-if="predict == 1"> Mild Diabetic Retinopathy has been detected</p>
+        <p class="prediction" v-if="predict == 2"> Moderate Diabetic Retinopathy has been detected</p>
+        <p class="prediction" v-if="predict == 3"> Severe Diabetic Retinopathy has been detected</p>
+        <p class="prediction" v-if="predict == 4"> Proliferactive Diabetic Retinopathy has been detected</p>
       </div>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button @click="takePhoto()">
@@ -88,27 +93,27 @@ export default defineComponent({
   data() {
     return {
       previewImageUrl: "",
-      file: "",
+      file: null,
       info: null,
-      predict: "null",
+      predict: null,
       selected: "",
     };
   },
   mounted() {
-    this.presentAlert()
+    this.presentAlert();
   },
   methods: {
     async presentAlert() {
-      const alert = await alertController
-        .create({
-          cssClass: 'my-custom-class',
-          header: 'Welcome',
-          subHeader: 'This is the Prediction page',
-          message: 'Here you can submit you image for a prediction of Diabetic Retinopathy <br> Its suggested to visit the tutorial page before accessing this one <br>  if you wish to viti the tutorial page click the arrow in the top right corner ',
-          buttons: ['OK'],
-        });
-      return alert.present();    
-  },
+      const alert = await alertController.create({
+        cssClass: "my-custom-class",
+        header: "Welcome",
+        subHeader: "This is the Prediction page",
+        message:
+          "Here you can submit you image for a prediction of Diabetic Retinopathy <br> Its suggested to visit the tutorial page before accessing this one <br>  if you wish to viti the tutorial page click the arrow in the top right corner ",
+        buttons: ["OK"],
+      });
+      return alert.present();
+    },
     handleFileUpload() {
       this.file = this.$refs.file.files[0];
       this.selected = this.file.name;
@@ -129,7 +134,7 @@ export default defineComponent({
           Make the request to the POST /single-file URL
         */
       axios
-        .post("http://localhost:5000/", formData, {
+        .post("https://289290091a95.ngrok.io", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
@@ -137,22 +142,18 @@ export default defineComponent({
         .then((response) => (this.predict = response.data))
         .catch(function() {
           console.log("FAILURE!!");
+
         });
-      if (this.predict == "null") {
-        this.predict = "No prediction was made please upload  an image ";
-      }
+
 
       const alert = await alertController.create({
         cssClass: "my-custom-class",
         header: "Result",
         subHeader: "Prediction",
-        message: "The System has predicted that : " + this.predict,
+        message: "The System has sent your Image for Prediction please wait a couple second for your results / you result to update! <br> you can view your results below the Send Image button " ,
         buttons: ["Close"],
       });
       return alert.present();
-    },
-    link() {
-      window.open("https://www.w3schools.com");
     },
   },
 });
@@ -177,7 +178,10 @@ input[type="file"] {
   cursor: pointer;
 }
 .your-img {
-    border-radius: 10px !important;
-    overflow: hidden;
+  border-radius: 10px !important;
+  overflow: hidden;
+}
+.prediction {
+  font-size: 26px;
 }
 </style>
