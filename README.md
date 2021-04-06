@@ -41,6 +41,7 @@ however the main files are insode
 DRSM/src/views - this is where the main HTML / JS / CSS code can be found for the front end of the application 
 DRMS/src/composables - this is where the main typescript of the project is located which enables some functionalities like opening the camera 
 DRMS/src/images - this is where all the iamges used in the projected are stored 
+File Testing List.xlsx - this file contains details of manual testing that was used to evaluate the frontend 
 
 ### Deployment 
 There are two steps in order to deploy the front end of the application depending of where you would like to view the app 
@@ -120,3 +121,11 @@ In the frontend do the following
 - change the address to the address provided by ngrok  
 
 Now the Frontend should be linked with the backend ( Flask Api )
+
+#Download Model weights and Model structure
+## Under this link you can download the models weights and model json structure
+## https://drive.google.com/drive/folders/1DxwyNjefVaVttWnbH-6fQ0wuUUNF4u1m?usp=sharing
+
+#Code References 
+## Here you will find reference to all of the code from which some of backend was inspired by 
+## https://github.com/debayanmitra1993-data/Blindness-Detection-Diabetic-Retinopathy-/blob/master/3_resnet50(colab).ipynb
