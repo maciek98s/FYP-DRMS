@@ -3,13 +3,13 @@
     <ion-content fullscreen class="ion-padding" scroll-y="true">
       <ion-header>
         <ion-toolbar>
-          <ion-title style="text-align: center;">Prediction Page</ion-title>
+          <ion-title style="text-align: center;">Tutorial Page</ion-title>
         </ion-toolbar>
       </ion-header>
       <div class="item images-parent">
         <ion-card>
           <ion-card-header>
-            <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            <ion-card-subtitle></ion-card-subtitle>
             <ion-card-title>Welcome To the Tutorial Page </ion-card-title>
           </ion-card-header>
 
@@ -25,17 +25,17 @@
         <ion-button
           size="small"
           color="light"
-          @click="() => router.push('/Prediction')"
+          @click="settingUpSensorVid"
         >
           View Tutorial </ion-button
         ><br />
         <img src="../images/camera.png" class="center-image" /><br />
         <label>Capturing Retina Image using D-eye sensor</label><br />
-        <ion-button size="small" color="light"> View Tutorial </ion-button
+        <ion-button size="small" color="light" @click="captureImageVid"> View Tutorial </ion-button
         ><br />
         <img src="../images/upload.png" class="center-image" /><br />
         <label>Uploading appropriate image to the app </label><br />
-        <ion-button size="small" color="light" @click="wsfsfs">
+        <ion-button size="small" color="light" @click="uploadImageVid">
           View Tutorial </ion-button
         ><br />
         <ion-button @click="() => router.push('/Prediction')" fill="clear"
@@ -78,6 +78,18 @@ export default defineComponent({
       router,
     };
   },
+  methods: {
+    captureImageVid(){
+       window.open("https://youtu.be/P0P6AqjSPIY");
+    },
+    settingUpSensorVid(){
+       window.open("https://youtu.be/z4Lhdh9ix20");
+    },
+    uploadImageVid(){
+       window.open("https://youtu.be/8S9fFnhg-Zc");
+    },
+
+  }
 
 });
 </script>
