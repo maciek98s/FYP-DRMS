@@ -4,6 +4,8 @@ Author : Maciej Skrzypczynski
 Date: 06/04/2021
 Description: Thile file consists of methods which are used to process user images and attemp image processing techniques on user images
 after thats completed the image is goes through a method to predict the user image for diabetic Retinopathy and then the result is returned
+Code References : Code uses for of the code which was inspired by the following code : 
+https://github.com/debayanmitra1993-data/Blindness-Detection-Diabetic-Retinopathy-/blob/master/3_resnet50(colab).ipynb
 '''
 #-------------------------------------------------------------------------------------------------------------------------------------------------------
 import csv
