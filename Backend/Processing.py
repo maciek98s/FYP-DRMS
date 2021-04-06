@@ -1,3 +1,11 @@
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+'''
+Author : Maciej Skrzypczynski 
+Date: 06/04/2021
+Description: Thile file consists of methods which are used to process user images and attemp image processing techniques on user images
+after thats completed the image is goes through a method to predict the user image for diabetic Retinopathy and then the result is returned
+'''
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
 import csv
 import tensorflow as tf
 import numpy as np
@@ -11,10 +19,10 @@ from keras.models import model_from_json
 from keras.backend import stack
 from keras.optimizers import SGD
 import tensorflow as tf; 
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-
-
+#function to remove black background from image
 def crop_image_from_gray(img,tol=7):
     if img.ndim ==2:
         mask = img>tol
@@ -35,6 +43,7 @@ def crop_image_from_gray(img,tol=7):
     #         print(img.shape)
         return img
 
+#function to ricle crop the image 
 def circle_crop(img, sigmaX = 30):   
     """
     Create circular crop around image centre    
@@ -55,6 +64,7 @@ def circle_crop(img, sigmaX = 30):
     img=cv2.addWeighted(img,4, cv2.GaussianBlur( img , (0,0) , sigmaX) ,-4 ,128)
     return img 
 
+#Function takes in image and processes the image reducing it size and enchancing it that saving it again 
 def preprocess_image(values):
     for i in values: 
       input_filepath = os.path.join('./','userImage','{}'.format(i))
@@ -65,13 +75,13 @@ def preprocess_image(values):
       img = circle_crop(img) 
       cv2.imwrite(output_filepath, cv2.resize(img, (512,512)))
 
-
+#write a CSV from user image containing file name in order to load it into a data frame 
 def createCSV():
     with open('predictData.csv', 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["id_code"])
         writer.writerow(["test"])
-
+#function load data into a dataframe
 def load_data():
     test = pd.read_csv('predictData.csv')
     
@@ -84,6 +94,7 @@ def load_data():
     
     return test
 
+#Function loads in the model and the weights. Following it runs prediction on the model and returns the results
 def predictResult():
     createCSV()
     json_file = open('model.json', 'r')
@@ -117,6 +128,6 @@ def predictResult():
         return(i)
 
 
-
+#-------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
