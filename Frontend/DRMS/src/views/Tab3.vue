@@ -6,6 +6,9 @@
           <div class="slide">
             <img src="../images/eye3.png" />
             <h1>Welcome</h1>
+                      <ion-button @click="() => router.push('/Prediction')" fill="clear"
+            >Skip Intro</ion-button
+          >
             <p>
               To <b> DRMS </b> also known as Diabetic Retinopathy Monitoring
               System
@@ -27,7 +30,7 @@
         </ion-slide>
 
         <ion-slide>
-          <img style="width: 250px;" src="../images/D-EYE.png" />
+          <img  src="../images/D-EYE.png" />
           <h2>What's a D-eye sensor</h2>
           <p>
             <b>The D-eye sensor </b>is a powerfull tool that allows us to look
