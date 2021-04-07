@@ -27,7 +27,7 @@
         </ion-slide>
 
         <ion-slide>
-          <img src="../images/D-EYE.png" />
+          <img style="width: 250px;" src="../images/D-EYE.png" />
           <h2>What's a D-eye sensor</h2>
           <p>
             <b>The D-eye sensor </b>is a powerfull tool that allows us to look
