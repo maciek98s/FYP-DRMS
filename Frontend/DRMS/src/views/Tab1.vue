@@ -134,7 +134,7 @@ export default defineComponent({
           Make the request to the POST /single-file URL
         */
       axios
-        .post("https://289290091a95.ngrok.io", formData, {
+        .post(" https://c3c99c0d9e4a.ngrok.io ", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
