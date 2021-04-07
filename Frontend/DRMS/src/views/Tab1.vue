@@ -3,7 +3,7 @@
     <ion-content fullscreen class="ion-padding" scroll-y="true">
       <ion-header>
         <ion-toolbar>
-          <ion-title style="text-align: center;">Prediction Page</ion-title>
+          <ion-title style="text-align: center;">   Prediction Page</ion-title>
           <ion-buttons slot="start">
             <ion-back-button
               @click="() => router.push('/Tutorial')"
